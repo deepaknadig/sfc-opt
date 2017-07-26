@@ -1,0 +1,12 @@
+/*********************************************
+ * OPL 12.7.1.0 Data
+ * Author: Deepak Nadig <deepakandig@cse.unl.edu>
+ * Creation Date: Jul 26, 2017 at 11:18:16 AM
+ *********************************************/
+
+FixedCost = 10;
+NumSCs = 6;
+NumFlows = 1200;
+
+Capacity = [200,200,200,200,200,200];
+FlowProcessingCost = [];
