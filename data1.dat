@@ -5,8 +5,8 @@
  *********************************************/
 
 FixedCost = 10;
-NumSCs = 6;
-NumFlows = 1200;
+NumSCs = 4;
+NumFlows = 100;
 
-Capacity = [200,200,200,200,200,200];
+Capacity = [30,30,30,30];
 FlowProcessingCost = [];

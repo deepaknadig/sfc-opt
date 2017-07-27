@@ -4,6 +4,8 @@
 		<config default="true" name="sf-opt" category="opl">
 			<ref name="sfc-opt.mod" type="model">
 			</ref>
+			<ref name="data1.dat" type="data">
+			</ref>
 		</config>
 	</configs>
 	

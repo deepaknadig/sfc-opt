@@ -5,9 +5,9 @@
 *********************************************/
 
 // Pre-processing
-execute PARAMS {
-  cplex.tilim = 100;
-}
+//execute PARAMS {
+//  cplex.tilim = 100;
+//}
 
 execute SETTINGS {
   settings.displayComponentName = true;
@@ -55,4 +55,37 @@ subject to {
     Constraint02:
       sum ( f in Flows ) TotalFlowProcCost[f][s] <= Assign[s] * Capacity[s];
 
+}
+
+
+range R1 = 1..NumSCs;
+range R2 = 1..NumFlows;
+int counter[R1];
+
+// Post-processing
+execute RESULTS {
+	writeln("Solution Time: " + cplex.getCplexTime()/1000000000);
+	writeln("Total Cost: ", (TotalFixedCost.solutionValue + TotalMappingCost.solutionValue));
+	writeln("SFC Usage Information: " + Assign.solutionValue);	
+//	writeln("Assignment Information: " + TotalFlowProcCost.solutionValue);
+		
+	for (var i in R2) {
+		for (var j in R1) {
+			if (TotalFlowProcCost[i][j] == 1) {
+				counter[j] = counter[j] + 1;
+			}
+		}
+	}
+	
+	writeln("Total Flows/SFC Assigned:");
+	write("\t\t");
+	for (var k in R1) {
+		write("S"+k+"\t\t");
+	}
+	write("\n");
+	write("\t\t");
+	for (var k in R1) {
+		write(counter[k]+ "\t\t"); 
+	}
+	
 }
